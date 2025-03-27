@@ -1,0 +1,75 @@
+{
+  "name": "skCode",
+  "title": "",
+  "bio": "🍻✈️♨️🚗🏍️💻📱👕👟🏃🏀📷☕️🍜🏕️🔤",
+  "experience": [
+    {
+      "title": "Automotive Development Engineer",
+      "period": "2012 - 2024",
+      "description": "12 years of experience in automotive development."
+    },
+    {
+      "title": "Web Application Development Engineer",
+      "period": "2025 -",
+      "description": "Starting focused web application development in 2025. Specializing in frontend technologies like React and Next.js."
+    }
+  ],
+  "certifications": [
+    {
+      "name": "Hazardous Materials Engineer Class B (Types 1, 4, 6) / 危険物取扱者乙種（第1、4、6類）",
+      "issuer": "Fire and Disaster Management Agency / 消防庁",
+      "year": 2023
+    },
+    {
+      "name": "Automobile Mechanic Class 2 (Gasoline Engines) / 二級自動車整備士（ガソリン）",
+      "issuer": "Ministry of Land, Infrastructure, Transport and Tourism / 国土交通省",
+      "year": 2022
+    },
+    {
+      "name": "Automobile Mechanic Class 3 (Diesel Engines) / 三級自動車整備士（ディーゼル）",
+      "issuer": "Ministry of Land, Infrastructure, Transport and Tourism / 国土交通省",
+      "year": 2021
+    },
+    {
+      "name": "Automobile Mechanic Class 3 (Chassis) / 三級自動車整備士（シャシ）",
+      "issuer": "Ministry of Land, Infrastructure, Transport and Tourism / 国土交通省",
+      "year": 2021
+    },
+    {
+      "name": "Autonomous Maintenance Specialist Level 1 / 自主保全士1級",
+      "issuer": "Japan Institute of Plant Maintenance / 日本プラントメンテナンス協会",
+      "year": 2020
+    },
+    {
+      "name": "Technical Skill Test: Internal Combustion Engine Assembly Level 1 / 技能検定 内燃機関組立1級",
+      "issuer": "Ministry of Health, Labour and Welfare / 厚生労働省",
+      "year": 2020
+    },
+    {
+      "name": "Technical Skill Test: Electronic Equipment Assembly Level 2 / 技能検定 電子機器組立2級",
+      "issuer": "Ministry of Health, Labour and Welfare / 厚生労働省",
+      "year": 2019
+    },
+    {
+      "name": "Composite Skills Certification / 複合技能士",
+      "issuer": "Ministry of Health, Labour and Welfare / 厚生労働省",
+      "year": 2019
+    },
+    {
+      "name": "TOEIC Score 600 / TOEIC 600点",
+      "issuer": "Educational Testing Service / 国際ビジネスコミュニケーション協会",
+      "year": 2018
+    },
+    {
+      "name": "Class 2 Electrician License / 第二種電気工事士",
+      "issuer": "Ministry of Economy, Trade and Industry / 経済産業省",
+      "year": 2018
+    }
+  ],
+  "social": {
+    "github": "https://github.com/kshota0406",
+    "linkedin": "https://linkedin.com/in/",
+    "instagram": "https://www.instagram.com/shota.406",
+    "threads": "https://www.threads.net/@shota.406"
+  }
+} 

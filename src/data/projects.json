@@ -1,0 +1,40 @@
+{
+  "projects": [
+    {
+      "id": "1",
+      "title": "Portfolio Website",
+      "description": "This portfolio site is built using Next.js 15 and the latest React features. It features refined styling with TailwindCSS and smooth animations powered by Framer Motion.\n\nThe site is fully responsive, providing optimal viewing across all devices from mobile to desktop. It also supports toggling between dark and light modes.\n\nThe project gallery includes a filtering system that allows visitors to narrow down projects based on technologies of interest.\n\nMoving forward, I plan to add new projects while continuously incorporating the latest web technologies.",
+      "technologies": ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion"],
+      "image": "/images/portfolio.png",
+      "url": "https://github.com/yourusername/portfolio",
+      "createdAt": "2024-03-27"
+    },
+    {
+      "id": "2",
+      "title": "Sample1",
+      "description": "Sample1",
+      "technologies": ["React Native", "JavaScript", "Redux", "Weather API", "Firebase"],
+      "image": "/images/sample.png",
+      "url": "https://github.com/yourusername/sample1",
+      "createdAt": "2024-03-27"
+    },
+    {
+      "id": "3",
+      "title": "Sample2",
+      "description": "Sample2",
+      "technologies": ["Vue.js", "TypeScript", "PWA", "IndexedDB", "TailwindCSS"],
+      "image": "/images/sample.png",
+      "url": "https://github.com/yourusername/sample2",
+      "createdAt": "2024-03-27"
+    },
+    {
+      "id": "4",
+      "title": "Sample3",
+      "description": "Sample3",
+      "technologies": ["Python", "TensorFlow", "Flask", "Docker", "REST API"],
+      "image": "/images/sample.png",
+      "url": "https://github.com/yourusername/sample3",
+      "createdAt": "2024-03-27"
+    }
+  ]
+} 
