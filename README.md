@@ -26,7 +26,7 @@ This portfolio is meant to be a visual representation of my work and abilities. 
 ## Viewing the Portfolio
 
 The portfolio is deployed on Vercel and can be viewed at:
-[Portfolio URL]
+[https://portfolio-showcase-qarp.vercel.app/]
 
 For the best experience, please use a modern browser like Chrome, Firefox, or Safari.
 
