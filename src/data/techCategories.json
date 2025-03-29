@@ -6,6 +6,7 @@
     { "id": "database", "name": "Databases", "techs": ["MongoDB", "PostgreSQL", "MySQL",  "Firebase"] },
     { "id": "devops", "name": "DevOps", "techs": ["Docker", "Git", "AWS",  "GCP"] },
     { "id": "mobile", "name": "Mobile", "techs": ["React Native", "Flutter"] },
-    { "id": "visualization", "name": "Visualization", "techs": ["Three.js", "Chart.js", "GSAP", "Framer Motion"] }
+    { "id": "visualization", "name": "Visualization", "techs": ["Three.js", "Chart.js", "GSAP", "Framer Motion", "MapLibre GL"] },
+    { "id": "ui", "name": "UI Frameworks", "techs": ["Material UI", "TailwindCSS", "Bootstrap", "Chakra UI"] }
   ]
 } 
