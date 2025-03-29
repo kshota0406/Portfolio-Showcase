@@ -9,8 +9,11 @@ import { Project } from '@/types';
 import projectsData from '@/data/projects.json';
 import TechIcon from '@/components/TechIcon';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { FaGithub } from 'react-icons/fa';
+import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { CalendarIcon } from '@heroicons/react/24/outline';
+
+// デフォルト画像のパス
+const DEFAULT_PROJECT_IMAGE = '/images/default-project.png';
 
 export default function ProjectDetail() {
   const { id } = useParams();
@@ -46,6 +49,9 @@ export default function ProjectDetail() {
     );
   }
 
+  // 画像のパスを取得、存在しない場合はデフォルト画像を使用
+  const imageSrc = project.image || DEFAULT_PROJECT_IMAGE;
+
   return (
     <div className="min-h-screen py-8 bg-soft-gray dark:bg-gray-900">
       <div className="container bg-soft-white/60 dark:bg-gray-800/60 p-6 rounded-xl shadow-sm">
@@ -67,11 +73,17 @@ export default function ProjectDetail() {
           {/* Project image */}
           <div className="relative aspect-video mb-6 rounded-xl overflow-hidden shadow-lg">
             <Image
-              src={project.image}
+              src={imageSrc}
               alt={project.title}
               fill
               className="object-cover"
               priority
+              sizes="(max-width: 768px) 100vw, 800px"
+              unoptimized={!project.image} // デフォルト画像の場合は最適化をスキップ
+              onError={(e) => {
+                // 画像読み込みエラーの場合もデフォルト画像に置き換え
+                (e.target as HTMLImageElement).src = DEFAULT_PROJECT_IMAGE;
+              }}
             />
           </div>
 
@@ -88,17 +100,34 @@ export default function ProjectDetail() {
                 })}</span>
               </div>
             </div>
-            <motion.a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.95 }}
-              title="Open GitHub Repository"
-            >
-              <FaGithub size={28} />
-            </motion.a>
+            <div className="flex gap-3">
+              {/* デモサイトリンク（存在する場合） */}
+              {project.demoUrl && (
+                <motion.a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+                  whileHover={{ scale: 1.1 }}
+                  whileTap={{ scale: 0.95 }}
+                  title="View Live Demo"
+                >
+                  <FaExternalLinkAlt size={24} />
+                </motion.a>
+              )}
+              {/* GitHub リンク */}
+              <motion.a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
+                title="Open GitHub Repository"
+              >
+                <FaGithub size={28} />
+              </motion.a>
+            </div>
           </div>
 
           {/* Technologies */}
@@ -126,22 +155,42 @@ export default function ProjectDetail() {
             </p>
           </div>
 
-          {/* GitHub link button */}
-          <motion.div
-            className="mt-8"
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-          >
-            <a
-              href={project.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center px-6 py-3 bg-blue-700 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-900 text-white font-medium rounded-lg transition-colors duration-200"
+          {/* Action buttons */}
+          <div className="mt-8 flex flex-wrap gap-4">
+            {/* GitHub link button */}
+            <motion.div
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <FaGithub size={20} className="mr-2" />
-              View Code on GitHub
-            </a>
-          </motion.div>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-6 py-3 bg-blue-700 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-900 text-white font-medium rounded-lg transition-colors duration-200"
+              >
+                <FaGithub size={20} className="mr-2" />
+                View Code on GitHub
+              </a>
+            </motion.div>
+
+            {/* デモサイトリンクボタン（存在する場合） */}
+            {project.demoUrl && (
+              <motion.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+              >
+                <a
+                  href={project.demoUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center px-6 py-3 bg-green-700 hover:bg-green-800 dark:bg-green-800 dark:hover:bg-green-900 text-white font-medium rounded-lg transition-colors duration-200"
+                >
+                  <FaExternalLinkAlt size={16} className="mr-2" />
+                  Visit Live Demo
+                </a>
+              </motion.div>
+            )}
+          </div>
         </motion.div>
       </div>
     </div>

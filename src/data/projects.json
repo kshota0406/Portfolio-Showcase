@@ -7,6 +7,7 @@
       "technologies": ["React", "Next.js", "TypeScript", "MapLibre GL", "Material UI"],
       "image": "/images/map-demo.png",
       "url": "https://github.com/kshota0406/map-demo",
+      "demoUrl": "https://map-demo-theta.vercel.app/",
       "createdAt": "2025-03-29"
     },
     {
@@ -16,6 +17,7 @@
       "technologies": ["Next.js", "React", "TypeScript", "TailwindCSS", "Framer Motion"],
       "image": "/images/portfolio.png",
       "url": "https://github.com/kshota0406/Portfolio-Showcase",
+      "demoUrl": "https://portfolio-showcase-qarp.vercel.app/",
       "createdAt": "2025-03-27"
     },
     {

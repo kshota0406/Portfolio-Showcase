@@ -4,7 +4,8 @@ export interface Project {
   description: string;
   technologies: string[];
   image: string;
-  url: string;
+  url: string; // GitHub URL
+  demoUrl?: string; // デモサイトURL（オプション）
   createdAt: string;
 }
 
