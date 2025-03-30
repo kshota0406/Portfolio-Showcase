@@ -22,21 +22,13 @@
     },
     {
       "id": "3",
-      "title": "Sample2",
-      "description": "Sample2",
-      "technologies": ["Vue.js", "TypeScript", "PWA", "IndexedDB", "TailwindCSS"],
-      "image": "/images/sample.png",
-      "url": "https://github.com/yourusername/sample2",
-      "createdAt": "2024-03-27"
-    },
-    {
-      "id": "4",
-      "title": "Sample3",
-      "description": "Sample3",
-      "technologies": ["Python", "TensorFlow", "Flask", "Docker", "REST API"],
-      "image": "/images/sample.png",
-      "url": "https://github.com/yourusername/sample3",
-      "createdAt": "2024-03-27"
+      "title": "Next.js Task Manager",
+      "description": "A simple but effective task management application built with Next.js and MongoDB.\n\nKey features:\n• Task Creation - Add new tasks with title, description, and priority\n• Task Management - Mark tasks as complete, edit details, or delete tasks\n• Filtering - Filter tasks by completion status\n• Responsive Design - Works seamlessly on mobile and desktop devices\n\nBuilt to demonstrate proficiency with Next.js, MongoDB integration, and modern React patterns.",
+      "technologies": ["Next.js", "React", "MongoDB", "TypeScript", "TailwindCSS"],
+      "image": "/images/next-tasks.png",
+      "url": "https://github.com/kshota0406/next-tasks",
+      "demoUrl": "https://next-tasks-pi.vercel.app/",
+      "createdAt": "2024-09-09"
     }
   ]
 } 
