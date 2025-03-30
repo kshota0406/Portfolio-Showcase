@@ -15,7 +15,8 @@ import {
   FaGitAlt,
   FaAws,
   FaFigma,
-  FaWindows
+  FaWindows,
+  FaRegSave
 } from 'react-icons/fa';
 import { 
   SiTypescript, 
@@ -57,7 +58,8 @@ import {
   SiWebpack,
   SiVite,
   SiEslint,
-  SiPrettier
+  SiPrettier,
+  SiCanva
 } from 'react-icons/si';
 
 // 技術アイコンのマッピング
@@ -113,6 +115,7 @@ const techIcons: Record<string, { icon: React.ElementType; color: string }> = {
   'firebase': { icon: SiFirebase, color: "#FFCA28" },
   'sql': { icon: FaDatabase, color: "#4479A1" },
   'mysql': { icon: FaDatabase, color: "#4479A1" },
+  'localstorage': { icon: FaRegSave, color: "#4479A1" },
 
   // API・データフェッチ
   'graphql': { icon: SiGraphql, color: "#E10098" },
@@ -133,6 +136,7 @@ const techIcons: Record<string, { icon: React.ElementType; color: string }> = {
   'gsap': { icon: SiGreensock, color: "#88CE02" },
   'chart.js': { icon: SiChartdotjs, color: "#FF6384" },
   'framer motion': { icon: SiFramer, color: "#0055FF" },
+  'canvas-confetti': { icon: SiCanva, color: "#00C4CC" },
 
   // テスト・デザイン
   'jest': { icon: SiJest, color: "#C21325" },

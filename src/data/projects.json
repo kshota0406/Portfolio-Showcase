@@ -11,6 +11,16 @@
       "createdAt": "2025-03-29"
     },
     {
+      "id": "4",
+      "title": "Kids Chore Tracker",
+      "description": "A web application for making household chores fun and rewarding for children.\n\nKey features:\n• Multiple child profiles with individual tracking\n• Colorful and intuitive UI with kid-friendly icons and themes\n• Celebratory confetti effects when tasks are completed\n• Point history tracking for each child\n• Custom chore creation and management\n• Data backup and restore functionality\n\nUtilizes local storage for data persistence, allowing offline usage without internet connection.",
+      "technologies": ["Next.js", "React", "TypeScript", "TailwindCSS", "LocalStorage", "canvas-confetti"],
+      "image": "/images/kids-app.png",
+      "url": "https://github.com/kshota0406/kids-app",
+      "demoUrl": "https://kids-app-eight.vercel.app/",
+      "createdAt": "2025-03-30"
+    },
+    {
       "id": "1",
       "title": "Portfolio Website",
       "description": "This portfolio site is built using Next.js 15 and the latest React features. It features refined styling with TailwindCSS and smooth animations powered by Framer Motion.\n\nThe site is fully responsive, providing optimal viewing across all devices from mobile to desktop. It also supports toggling between dark and light modes.\n\nThe project gallery includes a filtering system that allows visitors to narrow down projects based on technologies of interest.\n\nMoving forward, I plan to add new projects while continuously incorporating the latest web technologies.",
