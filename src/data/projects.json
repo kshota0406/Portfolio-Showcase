@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "id": "5",
+      "title": "BizBuz",
+      "description": "A web application that transforms ordinary text into business terminology using OpenAPI integration.\n\nKey features:\n• Three conversion tones (Normal/Gag/Extreme) powered by OpenAPI\n• Conversion history storage (up to 20 entries)\n• Browser-based data storage\n• Responsive design\n• Real-time text transformation using OpenAPI endpoints\n\nA service that can be enjoyed by everyone from business professionals to students, showcasing modern API integration techniques.",
+      "technologies": ["Next.js", "TypeScript", "TailwindCSS", "LocalStorage", "OpenAPI"],
+      "image": "/images/bizbuz.png",
+      "url": "https://github.com/kshota0406/bizbuz",
+      "demoUrl": "https://bizbuz.vercel.app/",
+      "createdAt": "2024-03-31"
+    },
+    {
       "id": "2",
       "title": "MapLibre Map Demo",
       "description": "An interactive map application demo utilizing MapLibre with modern UI and diverse mapping features.\n\nKey features:\n• Marker Display - Add and manage markers at any location\n• Route Display - Calculate and display routes between two points\n• Map Styles - Switch between various map styles and 3D displays\n• Current Location - Display user's current location on the map\n\nImplemented with a modern glass-morphism UI design and responsive layout that adapts to all devices.",
