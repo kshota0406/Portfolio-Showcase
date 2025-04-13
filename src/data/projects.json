@@ -3,8 +3,8 @@
     {
       "id": "5",
       "title": "BizBuz",
-      "description": "A web application that transforms ordinary text into business terminology using OpenAPI integration.\n\nKey features:\n• Three conversion tones (Normal/Gag/Extreme) powered by OpenAPI\n• Conversion history storage (up to 20 entries)\n• Browser-based data storage\n• Responsive design\n• Real-time text transformation using OpenAPI endpoints\n\nA service that can be enjoyed by everyone from business professionals to students, showcasing modern API integration techniques.",
-      "technologies": ["Next.js", "TypeScript", "TailwindCSS", "LocalStorage", "OpenAPI"],
+      "description": "A web application that transforms ordinary text into business terminology using OpenAI integration.\n\nKey features:\n• Three conversion tones (Normal/Gag/Extreme) powered by OpenAI\n• Conversion history storage (up to 20 entries)\n• Browser-based data storage\n• Responsive design optimized for both desktop and mobile devices\n• Real-time text transformation using OpenAI API\n• Mobile-friendly interface for easy access to business terminology\n\nA service that can be enjoyed by everyone from business professionals to students, showcasing modern AI integration techniques.",
+      "technologies": ["Next.js", "TypeScript", "TailwindCSS", "LocalStorage", "OpenAI"],
       "image": "/images/bizbuz.png",
       "url": "https://github.com/kshota0406/bizbuz",
       "demoUrl": "https://bizbuz.vercel.app/",

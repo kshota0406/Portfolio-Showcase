@@ -1,12 +1,13 @@
 {
   "categories": [
     { "id": "frontend", "name": "Frontend", "techs": ["React", "Vue.js", "Angular", "Next.js"] },
-    { "id": "backend", "name": "Backend", "techs": ["Node.js", "Express", "NestJS", "Django", "Spring", "Laravel", "OpenAPI"] },
+    { "id": "backend", "name": "Backend", "techs": ["Node.js", "Express", "NestJS", "Django", "Spring", "Laravel"] },
     { "id": "language", "name": "Languages", "techs": ["JavaScript", "TypeScript", "Python", "Java", "PHP", "Go"] },
     { "id": "database", "name": "Databases", "techs": ["MongoDB", "PostgreSQL", "MySQL", "Firebase", "LocalStorage"] },
     { "id": "devops", "name": "DevOps", "techs": ["Docker", "Git", "AWS", "GCP"] },
     { "id": "mobile", "name": "Mobile", "techs": ["React Native", "Flutter"] },
     { "id": "visualization", "name": "Visualization", "techs": ["Three.js", "Chart.js", "GSAP", "Framer Motion", "MapLibre GL", "canvas-confetti"] },
-    { "id": "ui", "name": "UI Frameworks", "techs": ["Material UI", "TailwindCSS", "Bootstrap", "Chakra UI"] }
+    { "id": "ui", "name": "UI Frameworks", "techs": ["Material UI", "TailwindCSS", "Bootstrap", "Chakra UI"] },
+    { "id": "ai", "name": "AI & ML", "techs": ["OpenAI", "TensorFlow", "PyTorch", "Scikit-learn"] }
   ]
 } 
