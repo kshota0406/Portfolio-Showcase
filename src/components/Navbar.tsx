@@ -6,7 +6,7 @@ import { usePathname } from 'next/navigation';
 import ThemeToggle from "./ThemeToggle";
 import { useEffect, useState } from "react";
 import { motion, useScroll } from "framer-motion";
-import { RocketLaunchIcon } from "@heroicons/react/24/outline";
+import HologramLogo from "./HologramLogo";
 
 // Animation settings
 const navItemAnimation = {
@@ -44,9 +44,8 @@ export default function Navbar() {
             className="flex items-center"
             {...navItemAnimation}
           >
-            <Link href="/" className="text-xl font-bold flex items-center gap-2">
-              <RocketLaunchIcon className="h-6 w-6" />
-              Portfolio
+            <Link href="/">
+              <HologramLogo className="w-[160px] h-[40px]" />
             </Link>
           </motion.div>
           

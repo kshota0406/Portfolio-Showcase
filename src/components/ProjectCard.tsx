@@ -112,11 +112,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
               <FaExternalLinkAlt className="h-4 w-4" />
             </a>
           )}
-          
-          {/* 詳細ページへのリンク */}
-          <Link href={`/project/${project.id}`} className="text-blue-700 dark:text-blue-300">
-            <ArrowTopRightOnSquareIcon className="h-4 w-4" />
-          </Link>
         </div>
       </motion.div>
     </div>

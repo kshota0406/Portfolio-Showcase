@@ -17,6 +17,11 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   title: "Portfolio Site",
   description: "My portfolio website built with Next.js",
+  icons: {
+    icon: '/icon',
+    apple: '/apple-icon',
+  },
+  manifest: '/manifest.json',
 };
 
 export default function RootLayout({
