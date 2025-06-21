@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "id": "6",
+      "title": "Route Generator",
+      "description": "An advanced route URL generation and sharing tool using Google Maps API. Set departure, destination, and multiple waypoints to create and share routes as URLs.\n\nKey features:\n• Google Maps URL Generation - Automatically generate URLs that open in Google Maps\n• Route Sharing - Save and share routes as unique URLs with others\n• Route Restoration - Automatically restore routes when opening shared URLs\n• Autocomplete - Powerful location input with Google Places API autocomplete\n• Drag & Drop - Intuitively reorder waypoints with drag and drop functionality\n• Responsive Design - Smooth UI optimized for both mobile and desktop\n• Modern UI - Cool holographic effects and modern design\n\nBuilt with Next.js App Router, TypeScript, and Google Maps JavaScript SDK for seamless route planning and sharing.",
+      "technologies": ["Next.js", "TypeScript", "TailwindCSS", "Jotai", "Google Maps API", "Google Places API"],
+      "image": "/images/route-generator.png",
+      "url": "https://github.com/kshota0406/route-generator",
+      "demoUrl": "https://route-generator-alpha.vercel.app/",
+      "createdAt": "2025-06-21"
+    },
+    {
       "id": "5",
       "title": "BizBuz",
       "description": "A web application that transforms ordinary text into business terminology using OpenAI integration.\n\nKey features:\n• Three conversion tones (Normal/Gag/Extreme) powered by OpenAI\n• Conversion history storage (up to 20 entries)\n• Browser-based data storage\n• Responsive design optimized for both desktop and mobile devices\n• Real-time text transformation using OpenAI API\n• Mobile-friendly interface for easy access to business terminology\n\nA service that can be enjoyed by everyone from business professionals to students, showcasing modern AI integration techniques.",
