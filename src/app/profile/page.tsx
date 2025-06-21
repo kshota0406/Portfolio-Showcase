@@ -1,14 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import Image from 'next/image';
 import profileData from '@/data/profile.json';
-import { UserIcon, AcademicCapIcon, InformationCircleIcon } from '@heroicons/react/24/outline';
-import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { UserIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
+import { FaGithub } from 'react-icons/fa';
 import { FaInstagram, FaThreads } from 'react-icons/fa6';
 import { FaBriefcase } from 'react-icons/fa';
-import LinkedInConnectButton from './linkedin-connect-button';
 
 // Profile data type extensions
 interface Certification {
@@ -42,7 +41,6 @@ const fadeInUp = {
 // Social icon mapping
 const socialIcons: Record<string, React.ReactNode> = {
   github: <FaGithub size={24} />,
-  linkedin: <FaLinkedin size={24} />,
   instagram: <FaInstagram size={24} />,
   threads: <FaThreads size={24} />
 };
@@ -50,15 +48,6 @@ const socialIcons: Record<string, React.ReactNode> = {
 export default function Profile() {
   // Type casting
   const typedProfileData = profileData as unknown as ProfileData;
-  
-  // State for LinkedIn profile data
-  const [linkedInData, setLinkedInData] = useState<any>(null);
-  
-  // Handler for LinkedIn profile data
-  const handleLinkedInProfileData = (data: any) => {
-    setLinkedInData(data);
-    console.log('LinkedIn profile data:', data);
-  };
   
   return (
     <div className="px-4 py-6 sm:py-8 bg-soft-gray dark:bg-gray-900">
@@ -95,9 +84,7 @@ export default function Profile() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.2 }}
             >
-              {linkedInData?.profile?.localizedFirstName 
-                ? `${linkedInData.profile.localizedFirstName} ${linkedInData.profile.localizedLastName}` 
-                : typedProfileData.name}
+              {typedProfileData.name}
             </motion.h1>
             <motion.h2
               className="text-xl sm:text-2xl text-gray-600 dark:text-gray-300 mb-4"
@@ -105,7 +92,7 @@ export default function Profile() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.3 }}
             >
-              {linkedInData?.positions?.elements?.[0]?.title || typedProfileData.title}
+              {typedProfileData.title}
             </motion.h2>
             
             {/* Social Link Icons */}
@@ -156,8 +143,7 @@ export default function Profile() {
             <h3 className="text-xl sm:text-2xl font-bold">Experience</h3>
           </div>
           <div className="space-y-3 sm:space-y-4">
-            {/* Display LinkedIn positions if available, otherwise use static data */}
-            {(linkedInData?.positions?.elements || typedProfileData.experience).map((exp: any, index: number) => (
+            {typedProfileData.experience.map((exp, index) => (
               <motion.div 
                 key={index}
                 className="bg-white dark:bg-gray-700/30 p-3 sm:p-4 rounded-lg shadow-sm"
@@ -166,18 +152,14 @@ export default function Profile() {
               >
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-center mb-2">
                   <h4 className="font-bold text-base sm:text-lg text-gray-900 dark:text-white">
-                    {linkedInData ? exp.title : exp.title}
+                    {exp.title}
                   </h4>
                   <span className="text-xs sm:text-sm text-blue-600 dark:text-blue-400">
-                    {linkedInData 
-                      ? `${exp.startDate?.year || ''} - ${exp.endDate?.year || 'Present'}`
-                      : exp.period}
+                    {exp.period}
                   </span>
                 </div>
                 <p className="text-gray-600 dark:text-gray-300 text-xs sm:text-sm">
-                  {linkedInData 
-                    ? exp.company?.localizedName || ''
-                    : exp.description}
+                  {exp.description}
                 </p>
               </motion.div>
             ))}
@@ -208,31 +190,6 @@ export default function Profile() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </motion.div>
-
-        {/* LinkedIn API Integration Section */}
-        <motion.div
-          className="card mb-6 sm:mb-8 p-4 bg-white/50 dark:bg-gray-800/50 rounded-xl shadow-sm"
-          {...fadeInUp}
-          transition={{ delay: 0.7 }}
-        >
-          <div className="flex items-center gap-2 mb-3">
-            <InformationCircleIcon className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 dark:text-blue-400" />
-            <h3 className="text-xl sm:text-2xl font-bold">LinkedIn Integration</h3>
-          </div>
-          <div className="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-lg border border-blue-100 dark:border-blue-800">
-            <p className="text-gray-700 dark:text-gray-200 text-sm mb-4">
-              This profile page can be enhanced with real-time LinkedIn data using the LinkedIn API. Connect your LinkedIn account to automatically import your profile information.
-            </p>
-            
-            <div className="flex justify-center mt-4 mb-2">
-              <LinkedInConnectButton onProfileData={handleLinkedInProfileData} />
-            </div>
-            
-            <div className="mt-4 text-xs text-gray-500 dark:text-gray-400">
-              <p>Note: This integration requires a LinkedIn Developer application and proper OAuth implementation.</p>
-            </div>
           </div>
         </motion.div>
       </motion.div>

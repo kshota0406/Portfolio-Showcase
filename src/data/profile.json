@@ -16,6 +16,11 @@
   ],
   "certifications": [
     {
+      "name": "AWS Certified Cloud Practitioner / AWS認定クラウドプラクティショナー",
+      "issuer": "Amazon Web Services / アマゾンウェブサービス",
+      "year": 2024
+    },
+    {
       "name": "Hazardous Materials Engineer Class B (Types 1, 4, 6) / 危険物取扱者乙種（第1、4、6類）",
       "issuer": "Fire and Disaster Management Agency / 消防庁",
       "year": 2023
@@ -68,7 +73,6 @@
   ],
   "social": {
     "github": "https://github.com/kshota0406",
-    "linkedin": "https://linkedin.com/in/",
     "instagram": "https://www.instagram.com/shota.406",
     "threads": "https://www.threads.net/@shota.406"
   }
