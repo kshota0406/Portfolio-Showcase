@@ -24,8 +24,8 @@ const config = {
         'hologram-hover': 'hologram-hover 2s ease-in-out infinite',
         'rocket-fly': 'rocket-fly 2s ease-in-out infinite',
         'rocket-trail': 'rocket-trail 1.5s ease-in-out infinite',
-        'hologram-rotate-light': 'hologram-rotate-light 4s linear infinite',
-        'hologram-rotate-dark': 'hologram-rotate-dark 4s linear infinite',
+        'hologram-rotate-light': 'hologram-rotate-light 8s ease-in-out infinite',
+        'hologram-rotate-dark': 'hologram-rotate-dark 8s ease-in-out infinite',
         'rainbow-rotate': 'rainbow-rotate 6s linear infinite',
         'particle-float': 'particle-float 4s ease-in-out infinite',
         'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
@@ -36,6 +36,8 @@ const config = {
         'neon-glow': 'neon-glow 2s ease-in-out infinite',
         'matrix-rain': 'matrix-rain 8s linear infinite',
         'plasma-flow': 'plasma-flow 5s ease-in-out infinite',
+        'hologram-wave': 'hologram-wave 12s ease-in-out infinite',
+        'rocket-rumble': 'rocket-rumble 0.3s ease-in-out infinite',
       },
       keyframes: {
         'hologram-rotate': {
@@ -49,24 +51,20 @@ const config = {
           }
         },
         'hologram-rotate-light': {
-          '0%': { 
-            background: 'conic-gradient(from 0deg, #fde047, #fb923c, #ef4444, #fde047)',
-            transform: 'rotate(0deg)'
+          '0%, 100%': {
+            backgroundPosition: '0% 50%',
           },
-          '100%': { 
-            background: 'conic-gradient(from 360deg, #fde047, #fb923c, #ef4444, #fde047)',
-            transform: 'rotate(360deg)'
-          }
+          '50%': {
+            backgroundPosition: '100% 50%',
+          },
         },
         'hologram-rotate-dark': {
-          '0%': { 
-            background: 'conic-gradient(from 0deg, #8b5cf6, #ec4899, #06b6d4, #8b5cf6)',
-            transform: 'rotate(0deg)'
+          '0%, 100%': {
+            backgroundPosition: '0% 50%',
           },
-          '100%': { 
-            background: 'conic-gradient(from 360deg, #8b5cf6, #ec4899, #06b6d4, #8b5cf6)',
-            transform: 'rotate(360deg)'
-          }
+          '50%': {
+            backgroundPosition: '100% 50%',
+          },
         },
         'rainbow-rotate': {
           '0%': { 
@@ -222,6 +220,18 @@ const config = {
             background: 'conic-gradient(from 180deg, #ff0080, #ff8c00, #40e0d0, #ee82ee, #ff0080)',
             transform: 'rotate(180deg) scale(1.1)'
           }
+        },
+        'hologram-wave': {
+          '0%, 100%': { 'borderRadius': '50% 50% 50% 50% / 50% 50% 50% 50%' },
+          '25%': { 'borderRadius': '58% 42% 75% 25% / 76% 46% 54% 24%' },
+          '50%': { 'borderRadius': '50% 50% 33% 67% / 55% 27% 73% 45%' },
+          '75%': { 'borderRadius': '33% 67% 58% 42% / 63% 68% 32% 37%' },
+        },
+        'rocket-rumble': {
+          '0%, 100%': { transform: 'translate(0, 0) rotate(0)' },
+          '25%': { transform: 'translate(0.5px, -0.5px) rotate(0.2deg)' },
+          '50%': { transform: 'translate(0, 0.5px) rotate(0)' },
+          '75%': { transform: 'translate(-0.5px, 0.5px) rotate(-0.2deg)' },
         }
       },
     },

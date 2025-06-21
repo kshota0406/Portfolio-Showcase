@@ -21,6 +21,7 @@ export default function HologramLogo({ className = '', onClick }: HologramLogoPr
         secondary: 'from-purple-500/40 via-pink-500/40 to-cyan-500/40',
         tertiary: 'from-violet-500 via-fuchsia-500 to-cyan-500',
         quaternary: 'from-indigo-500 via-purple-500 to-pink-500',
+        quinary: 'from-teal-400 via-blue-500 to-fuchsia-500',
         particle1: 'bg-white/80',
         particle2: 'bg-cyan-400/90',
         particle3: 'bg-pink-400/90',
@@ -35,7 +36,9 @@ export default function HologramLogo({ className = '', onClick }: HologramLogoPr
         trail4: 'from-purple-400 to-transparent',
         animation: 'animate-hologram-rotate-dark',
         textColor: 'text-white',
-        iconColor: 'text-white'
+        iconColor: 'text-white',
+        borderColor: 'border-white/40 group-hover:border-white/60',
+        borderColor3D: 'border-white/20 group-hover:border-white/40',
       };
     } else {
       return {
@@ -43,6 +46,7 @@ export default function HologramLogo({ className = '', onClick }: HologramLogoPr
         secondary: 'from-yellow-300/50 via-orange-400/50 to-red-500/50',
         tertiary: 'from-amber-400 via-orange-500 to-pink-500',
         quaternary: 'from-red-400 via-pink-500 to-purple-500',
+        quinary: 'from-lime-400 via-emerald-500 to-cyan-500',
         particle1: 'bg-yellow-200/90',
         particle2: 'bg-orange-200/90',
         particle3: 'bg-red-200/90',
@@ -57,7 +61,9 @@ export default function HologramLogo({ className = '', onClick }: HologramLogoPr
         trail4: 'from-purple-400 to-transparent',
         animation: 'animate-hologram-rotate-light',
         textColor: 'text-gray-800',
-        iconColor: 'text-gray-800'
+        iconColor: 'text-gray-800',
+        borderColor: 'border-gray-600/40 group-hover:border-gray-600/60',
+        borderColor3D: 'border-gray-600/20 group-hover:border-gray-600/40',
       };
     }
   };
@@ -66,25 +72,29 @@ export default function HologramLogo({ className = '', onClick }: HologramLogoPr
 
   return (
     <motion.div
-      className={`relative rounded-full overflow-hidden group ${className}`}
+      className={`relative rounded-full overflow-hidden group ${className} animate-hologram-wave`}
       onClick={onClick}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
+      style={{ animationDelay: '-6s' }}
     >
       {/* 3D深度エフェクト - 背景 */}
       <div className="absolute inset-0 bg-gradient-radial from-black/20 via-transparent to-transparent" />
       
       {/* メインのホログラム背景 */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${colors.primary} ${colors.animation}`} />
+      <div className={`absolute inset-0 bg-gradient-to-r ${colors.primary} ${colors.animation} bg-[length:200%_200%]`} />
       
       {/* 追加の光のレイヤー */}
-      <div className={`absolute inset-0 bg-gradient-to-r ${colors.secondary} ${colors.animation}`} />
+      <div className={`absolute inset-0 bg-gradient-to-r ${colors.secondary} ${colors.animation} bg-[length:200%_200%]`} />
       
       {/* 第三のグラデーションレイヤー */}
-      <div className={`absolute inset-0 bg-gradient-to-br ${colors.tertiary} ${colors.animation}`} style={{ animationDelay: '2s' }} />
+      <div className={`absolute inset-0 bg-gradient-to-br ${colors.tertiary} ${colors.animation} bg-[length:200%_200%]`} style={{ animationDelay: '2s' }} />
       
       {/* 第四のグラデーションレイヤー */}
-      <div className={`absolute inset-0 bg-gradient-to-bl ${colors.quaternary} ${colors.animation}`} style={{ animationDelay: '3s' }} />
+      <div className={`absolute inset-0 bg-gradient-to-bl ${colors.quaternary} ${colors.animation} bg-[length:200%_200%]`} style={{ animationDelay: '3s' }} />
+      
+      {/* 第五のグラデーションレイヤー */}
+      <div className={`absolute inset-0 bg-gradient-to-tr ${colors.quinary} ${colors.animation} bg-[length:200%_200%]`} style={{ animationDelay: '4s' }} />
       
       {/* 虹色エフェクト */}
       <div className="absolute inset-0 bg-gradient-to-r from-red-500 via-yellow-500 via-green-500 via-blue-500 via-indigo-500 to-purple-500 opacity-20 animate-rainbow-rotate" style={{ animationDelay: '1s' }} />
@@ -160,10 +170,10 @@ export default function HologramLogo({ className = '', onClick }: HologramLogoPr
       <div className="absolute inset-0 rounded-full bg-gradient-to-bl from-white/0 via-white/10 to-white/0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 animate-hologram-hover" style={{ animationDelay: '1s' }} />
       
       {/* 境界線の光効果 */}
-      <div className="absolute inset-0 rounded-full border-2 border-white/40 group-hover:border-white/60 transition-colors duration-300" />
+      <div className={`absolute inset-0 rounded-full border-2 ${colors.borderColor} transition-colors duration-300`} />
       
       {/* 3D境界線エフェクト */}
-      <div className="absolute inset-0 rounded-full border border-white/20 group-hover:border-white/40 transition-colors duration-300" />
+      <div className={`absolute inset-0 rounded-full border ${colors.borderColor3D} transition-colors duration-300`} />
       
       {/* ロケット特有の光の尾 */}
       <div className={`absolute -bottom-1 left-1/4 transform -translate-x-1/2 w-1.5 bg-gradient-to-t ${colors.trail1} opacity-70 group-hover:opacity-100 transition-opacity duration-300 animate-rocket-trail`} />
