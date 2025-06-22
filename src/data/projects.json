@@ -1,6 +1,16 @@
 {
   "projects": [
     {
+      "id": "7",
+      "title": "GoalGrid",
+      "description": "A beautiful life goal management application that displays 8 life themes and their associated 8 specific action goals in a radial grid format.\n\nKey features:\n• Radial Grid Display - Beautiful visual representation of life goals in a circular layout\n• 8 Life Themes - Organized goals across different life areas (English, Software Skills, Health, Family, Work, Fitness, Mental Care, Lifestyle)\n• Goal Categorization - Icons to classify different types of goals (numerical, continuous, internal, restrictions/rewards)\n• Pastel Gradient Design - Aesthetically pleasing color scheme with smooth gradients\n• Responsive Layout - Mobile-friendly design that adapts to all screen sizes\n• Visual Hierarchy - Clear organization of goals with intuitive visual structure\n\nBuilt with Next.js and TypeScript, featuring a static design focused on beautiful goal visualization.",
+      "technologies": ["Next.js", "React", "TypeScript", "TailwindCSS"],
+      "image": "/images/goal-grid.png",
+      "url": "https://github.com/kshota0406/GoalGrid",
+      "demoUrl": "https://goal-grid-psi.vercel.app/",
+      "createdAt": "2025-06-22"
+    },
+    {
       "id": "6",
       "title": "Route Generator",
       "description": "An advanced route URL generation and sharing tool using Google Maps API. Set departure, destination, and multiple waypoints to create and share routes as URLs.\n\nKey features:\n• Google Maps URL Generation - Automatically generate URLs that open in Google Maps\n• Route Sharing - Save and share routes as unique URLs with others\n• Route Restoration - Automatically restore routes when opening shared URLs\n• Autocomplete - Powerful location input with Google Places API autocomplete\n• Drag & Drop - Intuitively reorder waypoints with drag and drop functionality\n• Responsive Design - Smooth UI optimized for both mobile and desktop\n• Modern UI - Cool holographic effects and modern design\n\nBuilt with Next.js App Router, TypeScript, and Google Maps JavaScript SDK for seamless route planning and sharing.",
