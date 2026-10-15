@@ -40,7 +40,7 @@ export default function ProjectDetail() {
     return (
       <div className="container flex flex-col items-center justify-center min-h-screen">
         <div className="text-2xl mb-4">Project not found</div>
-        <Link href="/" className="text-blue-600 hover:underline flex items-center">
+        <Link href="/portfolio" className="text-blue-600 hover:underline flex items-center">
           <ArrowLeftIcon className="h-4 w-4 mr-2" />
           Back to Projects
         </Link>
@@ -62,7 +62,7 @@ export default function ProjectDetail() {
         >
           <div className="flex items-center justify-between mb-2">
             <Link 
-              href="/" 
+              href="/portfolio"
               className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-[var(--line)] bg-[color-mix(in_srgb,_var(--sand-2)_70%,_transparent)] hover:-translate-y-0.5 transition-transform"
             >
               <ArrowLeftIcon className="h-4 w-4" />

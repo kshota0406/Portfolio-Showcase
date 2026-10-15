@@ -32,8 +32,9 @@ export default function Navbar() {
 
   return (
     <>
+      <div className="fixed inset-x-0 top-0 z-[60] h-[2px] bg-[color-mix(in_srgb,var(--line)_30%,transparent)]" aria-hidden="true" />
       <motion.div
-        className="fixed top-0 left-0 right-0 h-1 z-[60] origin-left bg-[var(--accent)]"
+        className="scroll-progress-indicator fixed left-0 top-0 z-[61] h-[2px] w-full origin-left"
         style={{ scaleX: scrollProgress }}
         aria-hidden="true"
       />
@@ -45,43 +46,90 @@ export default function Navbar() {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
       >
-      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between gap-3 py-3">
+      <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between gap-2 py-3">
           {/* Logo section */}
-          <motion.div className="flex items-center flex-shrink-0" {...navItemAnimation}>
-            <Link href="/">
-              <span className="nav-pill brand-pill relative overflow-hidden">
-                <span className="absolute inset-[2px] rounded-full border border-white/10 pointer-events-none" />
-                <span className="absolute -left-2 -top-2 w-10 h-10 bg-[radial-gradient(circle_at_30%_30%,rgba(255,255,255,0.18),transparent_55%)]" />
-                <span className="absolute -right-3 -bottom-3 w-14 h-14 bg-[radial-gradient(circle_at_60%_60%,rgba(248,101,62,0.2),transparent_60%)]" />
-                <span className="relative flex items-center gap-2">
-                  <span className="inline-flex h-2 w-2 rounded-full bg-[var(--accent-2)] shadow-[0_0_0_6px_rgba(255,218,71,0.2)]" />
-                  <span className="tracking-[0.12em] font-semibold">Portfolio</span>
-                </span>
-              </span>
-            </Link>
-          </motion.div>
-
-          {/* Navigation links */}
-          <div className="flex items-center gap-3 sm:gap-4 md:gap-6">
-            {/* Link to Profile page */}
+          <div className="flex shrink-0 items-center gap-1">
             <motion.div {...navItemAnimation}>
               <Link
-                href="/profile"
-                aria-label="Profile"
-                className={`nav-circle w-12 h-12 overflow-hidden ${
-                  pathname === "/profile" ? "border-[var(--accent-2)]" : ""
-                }`}
+                href="/"
+                aria-label="Home — Profile"
+                title="Home"
+                className={`home-nav-link flex h-7 w-auto shrink-0 items-center gap-1 rounded-full px-2 min-[360px]:h-[30px] min-[375px]:h-[34px] min-[375px]:gap-1.5 min-[375px]:px-2.5 sm:h-11 sm:gap-2 sm:px-3 ${pathname === "/" ? "is-active" : ""}`}
                 prefetch={true}
               >
-                <div className="relative w-9 h-9 rounded-full overflow-hidden border border-white/50 flex-shrink-0">
-                  <Image
-                    src="/images/icon.png"
-                    alt="Profile"
-                    fill
-                    className="object-cover"
-                  />
-                </div>
+                <span className="relative h-[18px] w-[18px] shrink-0 overflow-hidden rounded-full border border-white/50 min-[375px]:h-5 min-[375px]:w-5 sm:h-7 sm:w-7">
+                  <Image src="/images/icon.png" alt="" fill sizes="28px" className="object-cover" />
+                </span>
+                <span className="font-[var(--font-display)] text-[10px] font-bold uppercase leading-none tracking-[0.14em] min-[375px]:text-[11px] sm:text-xs">Home</span>
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Navigation links */}
+          <div className="flex shrink-0 items-center gap-0 min-[360px]:gap-1 sm:gap-4 md:gap-6">
+            {/* Portfolio page */}
+            <motion.div {...navItemAnimation}>
+              <Link
+                href="/portfolio"
+                aria-label="Portfolio"
+                title="Portfolio"
+                className={`nav-circle h-7 w-7 shrink-0 min-[360px]:h-[30px] min-[360px]:w-[30px] min-[375px]:h-[34px] min-[375px]:w-[34px] sm:h-11 sm:w-11 ${pathname.startsWith("/portfolio") ? "border-[var(--accent-2)]" : ""}`}
+                prefetch={true}
+              >
+                <span className="text-sm leading-none min-[375px]:text-base sm:text-xl" aria-hidden="true">💻</span>
+              </Link>
+            </motion.div>
+
+            {/* Travel map page */}
+            <motion.div {...navItemAnimation}>
+              <Link
+                href="/places"
+                aria-label="Travel map"
+                title="Travel map"
+                className={`nav-circle h-7 w-7 shrink-0 min-[360px]:h-[30px] min-[360px]:w-[30px] min-[375px]:h-[34px] min-[375px]:w-[34px] sm:h-11 sm:w-11 ${pathname === "/places" ? "border-[var(--accent-2)]" : ""}`}
+                prefetch={true}
+              >
+                <span className="text-sm leading-none min-[375px]:text-base sm:text-xl" aria-hidden="true">🇯🇵</span>
+              </Link>
+            </motion.div>
+
+            {/* Visited destinations page */}
+            <motion.div {...navItemAnimation}>
+              <Link
+                href="/destinations"
+                aria-label="Places I’ve visited"
+                title="Places I’ve visited"
+                className={`nav-circle h-7 w-7 shrink-0 min-[360px]:h-[30px] min-[360px]:w-[30px] min-[375px]:h-[34px] min-[375px]:w-[34px] sm:h-11 sm:w-11 ${pathname === "/destinations" ? "border-[var(--accent-2)]" : ""}`}
+                prefetch={true}
+              >
+                <span className="text-sm leading-none min-[375px]:text-base sm:text-xl" aria-hidden="true">🌏</span>
+              </Link>
+            </motion.div>
+
+            {/* Cars page */}
+            <motion.div {...navItemAnimation}>
+              <Link
+                href="/cars"
+                aria-label="Cars I’ve owned"
+                title="Cars I’ve owned"
+                className={`nav-circle h-7 w-7 shrink-0 min-[360px]:h-[30px] min-[360px]:w-[30px] min-[375px]:h-[34px] min-[375px]:w-[34px] sm:h-11 sm:w-11 ${pathname === "/cars" ? "border-[var(--accent-2)]" : ""}`}
+                prefetch={true}
+              >
+                <span className="text-sm leading-none min-[375px]:text-base sm:text-xl" aria-hidden="true">🚗</span>
+              </Link>
+            </motion.div>
+
+            {/* Running page */}
+            <motion.div {...navItemAnimation}>
+              <Link
+                href="/running"
+                aria-label="Running"
+                title="Running"
+                className={`nav-circle h-7 w-7 shrink-0 min-[360px]:h-[30px] min-[360px]:w-[30px] min-[375px]:h-[34px] min-[375px]:w-[34px] sm:h-11 sm:w-11 ${pathname === "/running" ? "border-[var(--accent-2)]" : ""}`}
+                prefetch={true}
+              >
+                <span className="text-sm leading-none min-[375px]:text-base sm:text-xl" aria-hidden="true">🏃</span>
               </Link>
             </motion.div>
 
