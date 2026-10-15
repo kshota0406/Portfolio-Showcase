@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 import { Project } from '@/types';
-import { ArrowTopRightOnSquareIcon, CalendarIcon } from '@heroicons/react/24/outline';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
+import { CalendarIcon } from '@heroicons/react/24/outline';
 import TechIcon from './TechIcon';
 
 // デフォルト画像のパス
@@ -14,6 +14,13 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project }: ProjectCardProps) {
+  const cardRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: cardRef,
+    offset: ['start end', 'end start'],
+  });
+  const imageY = useTransform(scrollYProgress, [0, 1], [18, -18]);
+
   // Format date
   const formatDate = (dateString: string) => {
     const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'short', day: 'numeric' };
@@ -23,49 +30,48 @@ export default function ProjectCard({ project }: ProjectCardProps) {
   // 画像のパスを取得、存在しない場合はデフォルト画像を使用
   const imageSrc = project.image || DEFAULT_PROJECT_IMAGE;
 
-  // プロジェクト詳細へのリンククリックをハンドル
-  const handleCardClick = () => {
-    // プロジェクト詳細ページへの遷移
-  };
-
-  // 外部リンククリック時の挙動（イベントの伝播を停止）
-  const handleExternalLinkClick = (e: React.MouseEvent) => {
-    e.stopPropagation();
-  };
-
   return (
-    <div className="h-full">
+    <div ref={cardRef} className="h-full">
       <motion.div
-        className="bg-soft-white dark:bg-gray-800 rounded-lg shadow-sm p-6 group hover:shadow-md transition-shadow duration-300 flex flex-col h-full cursor-pointer"
-        initial={{ opacity: 1 }}
+        className="project-card group transition-transform duration-200 flex flex-col h-full cursor-pointer"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.55, ease: 'easeOut' }}
         whileHover={{ y: -5 }}
       >
         <Link href={`/project/${project.id}`} className="flex flex-col flex-grow">
-          <div className="relative h-48 mb-4 overflow-hidden rounded-lg">
-            <Image
-              src={imageSrc}
-              alt={project.title}
-              fill
-              sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-              className="object-cover group-hover:scale-105 transition-transform duration-300"
-              unoptimized={!project.image}
-              onError={(e) => {
-                (e.target as HTMLImageElement).src = DEFAULT_PROJECT_IMAGE;
-              }}
-            />
+          <div className="flex items-center justify-end project-meta mb-3">
+            <div className="flex items-center gap-1 text-[var(--muted)]">
+              <CalendarIcon className="h-4 w-4" />
+              <span>{formatDate(project.createdAt)}</span>
+            </div>
+          </div>
+
+          <div className="relative h-48 mb-3 overflow-hidden rounded-lg border border-[var(--line)]">
+            <motion.div className="absolute inset-0" style={{ y: imageY, scale: 1.12 }}>
+              <Image
+                src={imageSrc}
+                alt={project.title}
+                fill
+                sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                className="object-cover group-hover:scale-105 transition-transform duration-300"
+                unoptimized={!project.image}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = DEFAULT_PROJECT_IMAGE;
+                }}
+              />
+            </motion.div>
           </div>
           <div className="flex-grow flex flex-col">
-            <div className="mb-4">
+            <div className="mb-3 space-y-1">
               <motion.h3
-                className="text-xl font-bold text-gray-900 dark:text-white group-hover:text-blue-700 dark:group-hover:text-blue-300"
+                className="text-xl font-semibold text-[var(--ink)] group-hover:text-[var(--accent)]"
                 title={project.title}
               >
                 {project.title}
               </motion.h3>
-              <div className="flex items-center text-sm text-gray-700 dark:text-gray-300 mt-1">
-                <CalendarIcon className="h-4 w-4 mr-1" />
-                <span>{formatDate(project.createdAt)}</span>
-              </div>
+              <p className="text-[var(--muted)] text-sm line-clamp-3">{project.description}</p>
             </div>
             
             <div className="mt-auto">
@@ -73,7 +79,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
                 {project.technologies.map((tech) => (
                   <motion.span
                     key={tech}
-                    className="px-3 py-1 text-sm bg-blue-200 dark:bg-blue-900/70 text-blue-900 dark:text-blue-50 rounded-full font-medium flex items-center gap-1"
+                    className="px-3 py-1 text-xs rounded-full font-semibold flex items-center gap-2 border border-[var(--line)] bg-[color-mix(in_srgb,_var(--sand-2)_60%,_transparent)] text-[var(--ink)]"
                     whileHover={{ scale: 1.1 }}
                   >
                     <TechIcon tech={tech} className="h-3.5 w-3.5" />
@@ -85,34 +91,6 @@ export default function ProjectCard({ project }: ProjectCardProps) {
           </div>
         </Link>
         
-        {/* 外部リンク */}
-        <div className="flex justify-end gap-3 mt-3">
-          {/* GitHub リンク */}
-          <a 
-            href={project.url} 
-            target="_blank" 
-            rel="noopener noreferrer"
-            onClick={handleExternalLinkClick}
-            className="text-gray-700 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"
-            title="View GitHub Repository"
-          >
-            <FaGithub className="h-4 w-4" />
-          </a>
-          
-          {/* デモサイトリンク（存在する場合） */}
-          {project.demoUrl && (
-            <a 
-              href={project.demoUrl} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              onClick={handleExternalLinkClick}
-              className="text-gray-700 hover:text-blue-700 dark:text-gray-300 dark:hover:text-blue-300 transition-colors"
-              title="View Live Demo"
-            >
-              <FaExternalLinkAlt className="h-4 w-4" />
-            </a>
-          )}
-        </div>
       </motion.div>
     </div>
   );

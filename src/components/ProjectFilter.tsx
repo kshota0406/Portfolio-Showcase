@@ -99,14 +99,14 @@ export default function ProjectFilter({
   const activeTechs = techCategories.find(cat => cat.id === activeCategory)?.techs || [];
 
   return (
-    <div className="mb-8 bg-soft-white/90 dark:bg-gray-800/70 p-5 rounded-xl shadow-sm">
+    <div className="space-y-5">
       {/* Header with title and clear button */}
-      <div className="flex justify-between items-center mb-4">
-        <h2 className="text-lg font-bold text-gray-900 dark:text-white">Filter by Technology</h2>
+      <div className="flex justify-between items-start gap-3">
+        <div />
         {selectedTechs.length > 0 && (
           <button 
             onClick={clearAll}
-            className="text-sm text-gray-700 dark:text-gray-300 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+            className="text-sm font-semibold text-[var(--ink)] hover:text-[var(--accent)] transition-colors"
           >
             Clear All
           </button>
@@ -115,11 +115,11 @@ export default function ProjectFilter({
 
       {/* Display active filters */}
       {selectedTechs.length > 0 && (
-        <div className="flex flex-wrap gap-2 mb-5 p-3 bg-gray-100/80 dark:bg-gray-700/40 rounded-lg">
+        <div className="flex flex-wrap gap-2 mb-3 p-3 rounded-lg border border-[var(--line)] bg-[color-mix(in_srgb,_var(--sand-2)_55%,_transparent)]">
           {selectedTechs.map(tech => (
             <motion.div 
               key={tech} 
-              className="flex items-center gap-1 px-3 py-1.5 rounded-lg text-sm bg-blue-600 text-white"
+              className="flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm bg-[color-mix(in_srgb,_var(--accent)_15%,_transparent)] text-[var(--ink)] border border-[color-mix(in_srgb,_var(--accent)_40%,_var(--line))]"
               initial={{ opacity: 0, scale: 0.8 }}
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.8 }}
@@ -144,17 +144,17 @@ export default function ProjectFilter({
           <>
             <button 
               onClick={() => scrollTabs('left')}
-              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-1 bg-gray-100 dark:bg-gray-700 shadow-md rounded-full"
+              className="absolute left-0 top-1/2 -translate-y-1/2 z-10 p-1 bg-[color-mix(in_srgb,_var(--sand-2)_80%,_transparent)] shadow-md rounded-full border border-[var(--line)]"
             >
-              <svg className="h-4 w-4 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-4 w-4 text-[var(--ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
             <button 
               onClick={() => scrollTabs('right')}
-              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-1 bg-gray-100 dark:bg-gray-700 shadow-md rounded-full"
+              className="absolute right-0 top-1/2 -translate-y-1/2 z-10 p-1 bg-[color-mix(in_srgb,_var(--sand-2)_80%,_transparent)] shadow-md rounded-full border border-[var(--line)]"
             >
-              <svg className="h-4 w-4 text-gray-700 dark:text-gray-300" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg className="h-4 w-4 text-[var(--ink)]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>
@@ -165,19 +165,17 @@ export default function ProjectFilter({
           className="overflow-x-auto scrollbar-hide" 
           ref={tabsContainerRef}
         >
-          <div className="border-b border-gray-300 dark:border-gray-600 mb-5 flex whitespace-nowrap">
+          <div className="tab-rail mb-4 whitespace-nowrap">
             {techCategories.map((category) => (
               <button
                 key={category.id}
                 onClick={() => handleCategoryChange(category.id)}
-                className={`inline-flex items-center px-4 py-2 text-sm font-medium ${
-                  activeCategory === category.id
-                    ? 'text-blue-700 border-b-2 border-blue-700 dark:text-blue-300 dark:border-blue-300'
-                    : 'text-gray-700 hover:text-gray-900 dark:text-gray-300 dark:hover:text-gray-100'
+                className={`pill-tab ${
+                  activeCategory === category.id ? 'is-active' : 'hover:text-[var(--ink)]'
                 }`}
               >
                 {categoryIcons[category.id]}
-                <span className="ml-2">{category.name}</span>
+                <span>{category.name}</span>
               </button>
             ))}
           </div>
@@ -190,10 +188,10 @@ export default function ProjectFilter({
           <motion.button
             key={tech}
             onClick={() => handleTechSelect(tech)}
-            className={`flex items-center gap-1 px-3 py-2 rounded-lg text-sm ${
+            className={`flex items-center gap-2 px-3 py-2 text-sm tech-chip ${
               selectedTechs.includes(tech)
-                ? 'bg-blue-600 text-white'
-                : 'bg-gray-200 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
+                ? 'is-active'
+                : ''
             }`}
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}

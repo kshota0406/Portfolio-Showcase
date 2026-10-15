@@ -36,32 +36,32 @@ export default function Home() {
   }, [selectedCategories]);
 
   return (
-    <div className="min-h-screen py-8 bg-soft-gray dark:bg-gray-900">
-      <div className="container bg-soft-white/60 dark:bg-gray-800/60 p-6 rounded-xl shadow-sm">
+    <div className="min-h-screen px-4 md:px-6 pb-16 pt-4">
+      <div className="container space-y-8 md:space-y-10">
         {/* Project filter */}
-        <ProjectFilter
-          selectedCategory={selectedCategories.join(',')}
-          onCategoryChange={handleCategoryChange}
-        />
+        <section className="section-shell">
+          <ProjectFilter
+            selectedCategory={selectedCategories.join(',')}
+            onCategoryChange={handleCategoryChange}
+          />
+        </section>
         
         {/* Project list */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-7">
           {filteredProjects.length > 0 ? (
-            // Projects found
             filteredProjects.map((project) => (
               <div key={project.id}>
                 <ProjectCard project={project} />
               </div>
             ))
           ) : (
-            // No projects found
             <div className="col-span-1 md:col-span-2 lg:col-span-3 text-center py-12">
-              <p className="text-gray-500 dark:text-gray-400 text-lg">
+              <p className="text-[var(--muted)] text-lg">
                 No projects found matching the selected categories.
               </p>
             </div>
           )}
-        </div>
+        </section>
       </div>
     </div>
   );

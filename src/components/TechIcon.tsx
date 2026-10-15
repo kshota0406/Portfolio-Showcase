@@ -36,7 +36,6 @@ import {
   SiFirebase,
   SiReactquery,
   SiGraphql,
-  SiAmazon,
   SiGooglecloud,
   SiVuedotjs,
   SiAngular,
@@ -59,7 +58,7 @@ import {
   SiVite,
   SiEslint,
   SiPrettier,
-  SiCanva
+  SiCanvas
 } from 'react-icons/si';
 
 // 技術アイコンのマッピング
@@ -136,7 +135,7 @@ const techIcons: Record<string, { icon: React.ElementType; color: string }> = {
   'gsap': { icon: SiGreensock, color: "#88CE02" },
   'chart.js': { icon: SiChartdotjs, color: "#FF6384" },
   'framer motion': { icon: SiFramer, color: "#0055FF" },
-  'canvas-confetti': { icon: SiCanva, color: "#00C4CC" },
+  'canvas-confetti': { icon: SiCanvas, color: "#00C4CC" },
 
   // テスト・デザイン
   'jest': { icon: SiJest, color: "#C21325" },

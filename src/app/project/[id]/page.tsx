@@ -9,7 +9,6 @@ import { Project } from '@/types';
 import projectsData from '@/data/projects.json';
 import TechIcon from '@/components/TechIcon';
 import { ArrowLeftIcon } from '@heroicons/react/24/outline';
-import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
 import { CalendarIcon } from '@heroicons/react/24/outline';
 
 // デフォルト画像のパス
@@ -53,146 +52,84 @@ export default function ProjectDetail() {
   const imageSrc = project.image || DEFAULT_PROJECT_IMAGE;
 
   return (
-    <div className="min-h-screen py-8 bg-soft-gray dark:bg-gray-900">
-      <div className="container bg-soft-white/60 dark:bg-gray-800/60 p-6 rounded-xl shadow-sm">
+    <div className="min-h-screen px-4 md:px-6 pb-16 pt-6">
+      <div className="container max-w-5xl">
         <motion.div
-          className="max-w-4xl mx-auto"
+          className="space-y-6"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          {/* Back link */}
-          <Link 
-            href="/" 
-            className="inline-flex items-center text-blue-600 hover:underline mb-6"
-          >
-            <ArrowLeftIcon className="h-4 w-4 mr-2" />
-            Back to Projects
-          </Link>
-
-          {/* Project image */}
-          <div className="relative aspect-video mb-6 rounded-xl overflow-hidden shadow-lg">
-            <Image
-              src={imageSrc}
-              alt={project.title}
-              fill
-              className="object-cover"
-              priority
-              sizes="(max-width: 768px) 100vw, 800px"
-              unoptimized={!project.image} // デフォルト画像の場合は最適化をスキップ
-              onError={(e) => {
-                // 画像読み込みエラーの場合もデフォルト画像に置き換え
-                (e.target as HTMLImageElement).src = DEFAULT_PROJECT_IMAGE;
-              }}
-            />
+          <div className="flex items-center justify-between mb-2">
+            <Link 
+              href="/" 
+              className="inline-flex items-center gap-2 px-3 py-2 rounded-full border border-[var(--line)] bg-[color-mix(in_srgb,_var(--sand-2)_70%,_transparent)] hover:-translate-y-0.5 transition-transform"
+            >
+              <ArrowLeftIcon className="h-4 w-4" />
+              <span className="text-sm font-semibold">Back to list</span>
+            </Link>
           </div>
 
-          {/* Project title and GitHub link */}
-          <div className="flex justify-between items-start mb-2">
-            <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-gray-900 dark:text-white">{project.title}</h1>
-              <div className="flex items-center text-gray-700 dark:text-gray-300 mt-2">
-                <CalendarIcon className="h-5 w-5 mr-1" />
-                <span>{new Date(project.createdAt).toLocaleDateString('en-US', { 
-                  year: 'numeric', 
-                  month: 'long', 
-                  day: 'numeric' 
-                })}</span>
+          <div className="section-shell">
+            {/* Project image */}
+            <div className="relative aspect-video mb-6 rounded-xl overflow-hidden border-2 border-[var(--line)] shadow-lg">
+              <Image
+                src={imageSrc}
+                alt={project.title}
+                fill
+                className="object-cover"
+                priority
+                sizes="(max-width: 768px) 100vw, 800px"
+                unoptimized={!project.image}
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = DEFAULT_PROJECT_IMAGE;
+                }}
+              />
+            </div>
+
+            {/* Project title */}
+            <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-4">
+              <div className="space-y-2">
+                <h1 className="text-3xl sm:text-4xl font-semibold text-[var(--ink)]">{project.title}</h1>
+                <div className="flex items-center text-[var(--muted)] project-meta">
+                  <CalendarIcon className="h-5 w-5 mr-2" />
+                  <span>{new Date(project.createdAt).toLocaleDateString('en-US', { 
+                    year: 'numeric', 
+                    month: 'long', 
+                    day: 'numeric' 
+                  })}</span>
+                </div>
               </div>
             </div>
-            <div className="flex gap-3">
-              {/* デモサイトリンク（存在する場合） */}
-              {project.demoUrl && (
-                <motion.a
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  title="View Live Demo"
-                >
-                  <FaExternalLinkAlt size={24} />
-                </motion.a>
-              )}
-              {/* GitHub リンク */}
-              <motion.a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-gray-800 dark:text-gray-200 hover:text-blue-600 dark:hover:text-blue-400"
-                whileHover={{ scale: 1.1 }}
-                whileTap={{ scale: 0.95 }}
-                title="Open GitHub Repository"
-              >
-                <FaGithub size={28} />
-              </motion.a>
+
+            {/* Technologies */}
+            <div className="mb-6">
+              <h2 className="text-xl font-semibold mb-3 text-[var(--ink)]">Technologies</h2>
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech) => (
+                  <motion.div
+                    key={tech}
+                    className="px-3 py-2 text-xs sm:text-sm rounded-full font-semibold flex items-center gap-2 border border-[var(--line)] bg-[color-mix(in_srgb,_var(--sand-2)_60%,_transparent)] text-[var(--ink)]"
+                    whileHover={{ scale: 1.05 }}
+                  >
+                    <TechIcon tech={tech} className="h-4 w-4" />
+                    {tech}
+                  </motion.div>
+                ))}
+              </div>
             </div>
-          </div>
 
-          {/* Technologies */}
-          <div className="mb-6">
-            <h2 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Technologies</h2>
-            <div className="flex flex-wrap gap-2">
-              {project.technologies.map((tech) => (
-                <motion.div
-                  key={tech}
-                  className="px-3 py-2 bg-blue-200 dark:bg-blue-900/70 text-blue-900 dark:text-blue-50 rounded-full font-medium flex items-center gap-2"
-                  whileHover={{ scale: 1.05 }}
-                >
-                  <TechIcon tech={tech} className="h-5 w-5" />
-                  {tech}
-                </motion.div>
-              ))}
+            {/* Project description */}
+            <div className="mb-6">
+              <h2 className="text-xl font-semibold mb-3 text-[var(--ink)]">Project Overview</h2>
+              <p className="text-[var(--muted)] leading-relaxed whitespace-pre-line">
+                {project.description}
+              </p>
             </div>
-          </div>
 
-          {/* Project description */}
-          <div className="mb-6">
-            <h2 className="text-xl font-bold mb-3 text-gray-900 dark:text-white">Project Overview</h2>
-            <p className="text-gray-800 dark:text-gray-100 leading-relaxed whitespace-pre-line">
-              {project.description}
-            </p>
-          </div>
-
-          {/* Action buttons */}
-          <div className="mt-8 flex flex-wrap gap-4">
-            {/* GitHub link button */}
-            <motion.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-6 py-3 bg-blue-700 hover:bg-blue-800 dark:bg-blue-800 dark:hover:bg-blue-900 text-white font-medium rounded-lg transition-colors duration-200"
-              >
-                <FaGithub size={20} className="mr-2" />
-                View Code on GitHub
-              </a>
-            </motion.div>
-
-            {/* デモサイトリンクボタン（存在する場合） */}
-            {project.demoUrl && (
-              <motion.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-              >
-                <a
-                  href={project.demoUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center px-6 py-3 bg-green-700 hover:bg-green-800 dark:bg-green-800 dark:hover:bg-green-900 text-white font-medium rounded-lg transition-colors duration-200"
-                >
-                  <FaExternalLinkAlt size={16} className="mr-2" />
-                  Visit Live Demo
-                </a>
-              </motion.div>
-            )}
           </div>
         </motion.div>
       </div>
     </div>
   );
-} 
+}
