@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/components/ThemeProvider';
 
 interface HologramLogoProps {
   className?: string;
@@ -188,4 +188,4 @@ export default function HologramLogo({ className = '', onClick }: HologramLogoPr
       <div className="absolute -bottom-4 left-1/4 transform -translate-x-1/2 w-2 bg-gradient-to-t from-white/20 via-white/10 to-transparent opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-energy-wave" />
     </motion.div>
   );
-} 
+}

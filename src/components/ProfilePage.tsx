@@ -157,8 +157,6 @@ export default function Profile() {
         <motion.section
           ref={careerTimelineRef}
           className="section-shell space-y-4 p-3 sm:p-6"
-          {...fadeInUp}
-          transition={{ delay: 0.2 }}
         >
           <div className="flex items-center gap-2">
             <FaBriefcase className="h-5 w-5 text-[var(--accent)]" />
@@ -174,13 +172,9 @@ export default function Profile() {
               aria-hidden="true"
             />
             {careerMilestones.map((milestone, index) => (
-              <motion.article
+              <article
                 key={milestone.marker}
                 className="project-card relative p-3 sm:p-5"
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.35 }}
-                transition={{ duration: 0.5, delay: index * 0.12, ease: 'easeOut' }}
               >
                 <span
                   className="absolute -left-5 top-5 grid h-4 w-4 place-items-center rounded-full border-[3px] border-[var(--paper)] bg-[var(--accent)] shadow-[0_0_0_3px_color-mix(in_srgb,var(--accent)_30%,transparent)] sm:-left-8"
@@ -307,7 +301,7 @@ export default function Profile() {
                     )}
                   </AnimatePresence>
                 )}
-              </motion.article>
+              </article>
             ))}
           </div>
         </motion.section>
@@ -315,8 +309,6 @@ export default function Profile() {
         {/* Certifications Section */}
         <motion.section
           className="section-shell space-y-4 p-3 sm:p-6"
-          {...fadeInUp}
-          transition={{ delay: 0.25 }}
         >
           <div className="flex items-center gap-2">
             <AcademicCapIcon className="h-5 w-5 text-[var(--accent)]" />

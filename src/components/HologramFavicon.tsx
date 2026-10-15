@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { RocketLaunchIcon } from "@heroicons/react/24/outline";
-import { useTheme } from 'next-themes';
+import { useTheme } from '@/components/ThemeProvider';
 
 interface HologramFaviconProps {
   className?: string;
@@ -162,4 +162,4 @@ export default function HologramFavicon({ className = '', onClick }: HologramFav
       <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-1.5 bg-gradient-to-t from-white/20 via-white/10 to-transparent opacity-30 group-hover:opacity-50 transition-opacity duration-300 animate-energy-wave" />
     </motion.div>
   );
-} 
+}
