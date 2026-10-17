@@ -37,4 +37,4 @@ If you have any questions or would like to discuss potential opportunities, plea
 
 ---
 
-© 2025 [kshota0406]. All Rights Reserved.
+© 2025 [skcode-dev]. All Rights Reserved.
