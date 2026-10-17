@@ -99,6 +99,145 @@
     z-index: 1;
   }
 
+  .profile-avatar-shell {
+    isolation: isolate;
+  }
+
+  .profile-avatar-halo {
+    position: absolute;
+    inset: -16%;
+    z-index: -1;
+    border-radius: 50%;
+    background: radial-gradient(circle, color-mix(in srgb, var(--accent-2) 32%, transparent), color-mix(in srgb, var(--accent) 14%, transparent) 48%, transparent 72%);
+    filter: blur(8px);
+    animation: avatar-halo 5s ease-in-out infinite alternate;
+  }
+
+  .profile-avatar-orbit {
+    position: absolute;
+    inset: -7%;
+    z-index: 1;
+    border: 1px solid color-mix(in srgb, var(--accent-2) 65%, transparent);
+    border-radius: 50%;
+    opacity: 0.8;
+    animation: avatar-orbit 14s linear infinite;
+  }
+
+  .profile-avatar-orbit::before,
+  .profile-avatar-orbit::after {
+    content: '';
+    position: absolute;
+    border: 1px solid color-mix(in srgb, var(--accent) 48%, transparent);
+    border-radius: 50%;
+  }
+
+  .profile-avatar-orbit::before {
+    inset: 7% -5%;
+    transform: rotate(-28deg);
+  }
+
+  .profile-avatar-orbit::after {
+    inset: -5% 7%;
+    transform: rotate(34deg);
+  }
+
+  .profile-avatar-orbit > span {
+    position: absolute;
+    top: 9%;
+    left: 20%;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 9px color-mix(in srgb, var(--accent-2) 80%, transparent);
+  }
+
+  .profile-avatar-spark {
+    position: absolute;
+    z-index: 20;
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent-2);
+    box-shadow: 0 0 10px 2px color-mix(in srgb, var(--accent-2) 52%, transparent);
+    animation: avatar-spark 2.8s ease-in-out infinite;
+  }
+
+  .profile-avatar-spark-one {
+    top: 9%;
+    right: 12%;
+  }
+
+  .profile-avatar-spark-two {
+    bottom: 14%;
+    left: 5%;
+    width: 3px;
+    height: 3px;
+    animation-delay: -1.3s;
+  }
+
+  .profile-avatar-stage {
+    position: relative;
+    background:
+      radial-gradient(ellipse at 26% 82%, color-mix(in srgb, var(--accent-2) 36%, transparent), transparent 54%),
+      radial-gradient(ellipse at 78% 18%, color-mix(in srgb, var(--accent) 30%, transparent), transparent 56%),
+      radial-gradient(ellipse at 50% 42%, color-mix(in srgb, var(--paper) 94%, transparent), transparent 70%),
+      linear-gradient(145deg, color-mix(in srgb, var(--sand-2) 90%, var(--accent-2)), var(--sand-1) 48%, color-mix(in srgb, var(--sand-2) 84%, var(--accent)));
+    background-size: 150% 150%;
+    animation: avatar-stage-drift 18s ease-in-out infinite alternate;
+  }
+
+  .profile-avatar-stage::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: linear-gradient(112deg, transparent 24%, rgba(255, 255, 255, 0.02) 38%, rgba(255, 255, 255, 0.38) 49%, rgba(255, 255, 255, 0.06) 57%, transparent 72%);
+    background-size: 230% 100%;
+    background-position: 130% 0;
+    mix-blend-mode: screen;
+    opacity: 0.42;
+    animation: avatar-light-sweep 8s ease-in-out infinite;
+  }
+
+  @keyframes avatar-orbit {
+    to { transform: rotate(360deg); }
+  }
+
+  @keyframes avatar-halo {
+    from { transform: scale(0.94); opacity: 0.72; }
+    to { transform: scale(1.06); opacity: 1; }
+  }
+
+  @keyframes avatar-spark {
+    0%, 100% { transform: scale(0.65); opacity: 0.45; }
+    50% { transform: scale(1.35); opacity: 1; }
+  }
+
+  @keyframes avatar-stage-drift {
+    from { background-position: 0% 40%; }
+    to { background-position: 100% 60%; }
+  }
+
+  @keyframes avatar-light-sweep {
+    0%, 12% { background-position: 130% 0; }
+    70%, 100% { background-position: -130% 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .profile-avatar-halo,
+    .profile-avatar-orbit,
+    .profile-avatar-spark,
+    .profile-avatar-stage {
+      animation: none;
+    }
+    .profile-avatar-stage::after {
+      animation: none;
+      background-position: 50% 0;
+    }
+  }
+
   .section-shell {
     position: relative;
     background: color-mix(in srgb, var(--paper) 92%, transparent);

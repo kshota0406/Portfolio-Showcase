@@ -2,7 +2,6 @@
 
 import React, { useRef, useState } from 'react';
 import { AnimatePresence, motion, useScroll, useSpring } from 'framer-motion';
-import Image from 'next/image';
 import profileData from '@/data/profile.json';
 import { UserIcon, AcademicCapIcon } from '@heroicons/react/24/outline';
 import { FaGithub } from 'react-icons/fa';
@@ -10,6 +9,7 @@ import { FaInstagram, FaThreads } from 'react-icons/fa6';
 import { FaBriefcase } from 'react-icons/fa';
 import { ChevronDownIcon } from '@heroicons/react/24/solid';
 import TechStack from '@/components/TechStack';
+import CharacterModelViewer from '@/components/CharacterModelViewer';
 
 // Profile data type extensions
 interface Certification {
@@ -91,19 +91,25 @@ export default function Profile() {
           <div className="flex items-center gap-3 min-[375px]:gap-4 sm:gap-6">
             {/* Profile Image */}
             <motion.div
-              className="relative h-16 w-16 shrink-0 overflow-hidden rounded-full border-[3px] border-[var(--line)] shadow-lg min-[375px]:h-[72px] min-[375px]:w-[72px] sm:h-24 sm:w-24 md:h-32 md:w-32"
+              className="profile-avatar-shell relative h-[72px] w-[72px] shrink-0 rounded-full min-[375px]:h-20 min-[375px]:w-20 sm:h-[104px] sm:w-[104px] md:h-[136px] md:w-[136px]"
               initial={{ opacity: 0, scale: 0.85 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.4, delay: 0.1 }}
               whileHover={{ rotate: -2 }}
             >
-              <Image
-                src="/images/icon.png"
-                alt={typedProfileData.name}
-                fill
-                className="object-cover"
-                priority
+              <span className="profile-avatar-halo" aria-hidden="true" />
+              <span className="profile-avatar-orbit" aria-hidden="true">
+                <span />
+              </span>
+              <span className="profile-avatar-spark profile-avatar-spark-one" aria-hidden="true" />
+              <span className="profile-avatar-spark profile-avatar-spark-two" aria-hidden="true" />
+              <div className="absolute inset-[4px] z-10 overflow-hidden rounded-full border-2 border-[var(--paper)] shadow-[0_8px_24px_rgba(11,29,58,0.22)] ring-1 ring-[var(--accent-2)]/70">
+              <CharacterModelViewer
+                src="/models/character-laptop.glb"
+                alt={`${typedProfileData.name} 3D profile avatar`}
+                compact
               />
+              </div>
             </motion.div>
 
             {/* Name and Title */}
